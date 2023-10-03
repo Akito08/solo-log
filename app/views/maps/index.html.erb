@@ -1,0 +1,34 @@
+<h2>Map</h2>
+
+<div id='map'></div>
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
+<%= include_gon %> 
+
+<script>
+let map
+let marker = []; 
+const shops = gon.shops;
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.6988, lng: 139.4462},
+    zoom: 12,
+  });
+
+  for (let i = 0; i < shops.length; i++) {
+    marker[i] = new google.maps.Marker({
+      position:  {lat: shops[i].latitude, lng: shops[i].longitude},
+      map: map
+    });
+  } 
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= "AIzaSyCUeYANLKwhTxzPtuCUUnEBlRcQF74NwuI" %>&callback=initMap" async defer></script>
