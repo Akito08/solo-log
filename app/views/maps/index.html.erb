@@ -52,4 +52,4 @@ function initMap(){
   }
 } 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= "AIzaSyCUeYANLKwhTxzPtuCUUnEBlRcQF74NwuI" %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
